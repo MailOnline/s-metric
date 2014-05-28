@@ -33,4 +33,4 @@
   and the maximum score achievable."
   (let [match (match s target)
         best (best-score s target)]
-    (.doubleValue (with-precision 3 (* (/ match best) 100M)))))
+    (* (/ match best) 100.)))

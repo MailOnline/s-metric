@@ -18,4 +18,4 @@
   "Return a match score as percentage for all the distance metrics combined"
   (let [match (match s target)
         best (best-score s target)]
-    (.doubleValue (with-precision 3 (* (/ match best) 100M)))))
+    (* (/ match best) 100.)))

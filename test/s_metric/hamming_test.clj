@@ -37,8 +37,7 @@
        (fact "percentage from the local maximum"
              (match-% "hello" "hello") => 100.
              (match-% "12345" "012345") => 0.
-             (match-% "123456" "12345") => 83.3
-             (match-% "12345" "123456") => 83.3
+             (match-% "123456" "12345") => 83.33333333333333
+             (match-% "12345" "123456") => 83.33333333333333
              (match-% "123abc" "123") => 50.
              (match-% "qwer" "abc134qwer") => 0.))
-

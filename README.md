@@ -24,7 +24,7 @@ s-metric is a set of metrics to score how close a string compare to another. The
 ## As a library
 
     :dependencies [
-      [s-metric "0.0.1"] ;; copy this into your project.clj
+      [s-metric "0.0.2"] ;; copy this into your project.clj
      ]
 
 And then:

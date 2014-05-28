@@ -15,8 +15,7 @@
 (facts "combined percentage"
        (fact "match sum up to final score"
              (match-% "123" "123") => 100.
-             (match-% "ta" "tabcdtargetefab") => 0.882
-             (match-% "abcd" "ab123bc123cd123") => 1.18
-             (match-% "abcd" "ab1abc23bc123cd123") => 1.32
-             (match-% "95BA4471695" "95BA403053") => 16.7))
-
+             (match-% "ta" "tabcdtargetefab") => 0.8823529411764706
+             (match-% "abcd" "ab123bc123cd123") => 1.176470588235294
+             (match-% "abcd" "ab1abc23bc123cd123") => 1.315789473684211
+             (match-% "95BA4471695" "95BA403053") => 16.7420814479638))
