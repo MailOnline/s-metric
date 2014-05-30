@@ -1,4 +1,4 @@
-(defproject s-metric "0.0.2"
+(defproject s-metric "0.0.3"
   :description "Library to score string distances based on a collection of distance metrics."
   :url "https://github.com/MailOnline/s-metric"
   :dependencies [[org.clojure/clojure "1.6.0"]

@@ -53,16 +53,4 @@
              (match-% "567" "123") => 0.
              (match-% "ababababab" "abab") => 425. ;bogus result, should instead throw error?
              (match-% "18BA4471695" "95BA403053") => 4.285714285714286
-             (match-% "149ZX494061" "149EX494061") => 32.0))
-
-;;(facts "performances on my laptop, uncomment and find your numbers"
-;;       (let [target (repeat 5000 (.substring (s/replace (java.util.UUID/randomUUID) #"-" "") 0 11))]
-;;         #_(fact "single execution"
-;;               (b/with-progress-reporting 
-;;                 (b/quick-bench 
-;;                   (match "1234567890ABC" "1234567890ABC") :verbose)))
-;;         (fact "working over multiple thousands should be sub-second"
-;;               (let [start (System/currentTimeMillis)]
-;;                 (do
-;;                   (time (dorun (map #(match "1234567890ABC" %) target)))
-;;                   (< (- (System/currentTimeMillis) start) 1000))) => truthy)))
+             (match-% "95BA447169A" "95BA4471695") => 77.0909090909091))

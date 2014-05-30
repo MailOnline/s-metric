@@ -18,7 +18,7 @@
              (match-% "ta" "tabcdtargetefab") => 0.8823529411764706
              (match-% "abcd" "ab123bc123cd123") => 1.176470588235294
              (match-% "abcd" "ab1abc23bc123cd123") => 1.315789473684211
-             (match-% "95BA4471695" "95BA403053") => 16.7420814479638))
+             (match-% "95BA4471695" "z5BA4471695") => 77.62237762237763))
 
 (defn rand-str [n]
   (.substring (clojure.string/replace (java.util.UUID/randomUUID) #"-" "") 0 n))
