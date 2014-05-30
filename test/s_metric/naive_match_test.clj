@@ -40,6 +40,7 @@
              (match "abcd" "ab123bc123cd123") => 6
              (match "abcd" "ab1abc23bc123cd123") => 13
              (match "18BA4471695" "95BA403053") => 9
+             (match "1234567890A" "1234564890A") => 66 ;; exponential drop
              (match "1234567890A" "1234567890A") => 275))
 
 (facts "maximum"
@@ -51,7 +52,8 @@
              (match-% "123" "123") => 100.
              (match-% "567" "123") => 0.
              (match-% "ababababab" "abab") => 425. ;bogus result, should instead throw error?
-             (match-% "18BA4471695" "95BA403053") => 4.285714285714286))
+             (match-% "18BA4471695" "95BA403053") => 4.285714285714286
+             (match-% "149ZX494061" "149EX494061") => 32.0))
 
 ;;(facts "performances on my laptop, uncomment and find your numbers"
 ;;       (let [target (repeat 5000 (.substring (s/replace (java.util.UUID/randomUUID) #"-" "") 0 11))]
