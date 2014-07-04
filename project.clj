@@ -8,6 +8,24 @@
   :uberjar-name "s-metric.jar"
   :repl-options {:init (do (require 'midje.repl) (midje.repl/autotest))}
   :generators [[lein-gen/generators "0.1.0"]]
+  :documentation {:files {
+                          "docs/combined"
+                          {:input "test/s_metric/combined_test.clj"
+                           :title "Combined Metrics"
+                           :sub-title "Put all metrics together in a single call"
+                           :author "reborg"
+                           :email  "reborg@reborg.net"}
+                          "docs/naive_match"
+                          {:input "test/s_metric/naive_match_test.clj"
+                           :title "Naive Comparison"
+                           :sub-title "simpler way of comparing two strings"
+                           :author "reborg"
+                           :email  "reborg@reborg.net"}
+                          "docs/hamming"
+                          {:input "test/s_metric/hamming_test.clj"
+                           :title "Hamming with padding"
+                           :author "reborg"
+                           :email  "reborg@reborg.net"}}}
   :profiles {:uberjar 
              {:main s-metric.core, :aot :all}
              :dev 
