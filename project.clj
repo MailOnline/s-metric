@@ -1,5 +1,5 @@
 (defproject s-metric "0.0.3"
-  :description "Library to score string distances based on a collection of distance metrics."
+  :description "collection of metrics to measure string distances"
   :url "https://github.com/MailOnline/s-metric"
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/tools.cli "0.3.1"]
@@ -7,7 +7,6 @@
   :main s-metric.core
   :uberjar-name "s-metric.jar"
   :repl-options {:init (do (require 'midje.repl) (midje.repl/autotest))}
-  :generators [[lein-gen/generators "0.1.0"]]
   :documentation {:files {
                           "docs/combined"
                           {:input "test/s_metric/combined_test.clj"
@@ -32,5 +31,4 @@
              {:dependencies [[midje "1.6.3"]
                              [criterium "0.4.3"]
                              [xrepl "0.1.2"]]
-              :plugins [[lein-midje "3.1.1"]
-                        [lein-gen "0.1.0"]]}})
+              :plugins [[lein-midje "3.1.3"]]}})
