@@ -6,7 +6,7 @@
                  [boost "0.1.2"]]
   :main s-metric.core
   :uberjar-name "s-metric.jar"
-  :repl-options {:init (do (require 'midje.repl) (midje.repl/autotest))}
+  :repl-options {:init (do (require 'midje.repl) (midje.repl/autotest)) :init-ns user}
   :documentation {:files {
                           "docs/combined"
                           {:input "test/s_metric/combined_test.clj"

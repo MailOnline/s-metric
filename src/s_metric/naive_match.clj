@@ -1,6 +1,7 @@
 (ns s-metric.naive-match
   "Naive match takes the brute force approach of searching all the substrings of size 2 and up
-  for the given target string. The score is accumulated based on the length of the matching substring.")
+  for the given target string. The score is accumulated based on the length of the matching substring."
+  (:require [s-metric.protocols :as p]))
 
 (set! *warn-on-reflection* true)
 (set! *unchecked-math* true)
@@ -44,7 +45,7 @@
   "Return the substrings in choices that are present in target, or an empty list if none was found."
   (filter #(>= (.indexOf target ^String %) 0) choices))
 
-(defn match [s target]
+(defn match [_ s target]
   "Return a matching score for string s, or its substrings, into target.
   The longer the matching substring the more points accumulated."
   (reduce + (take-while (partial < 0) (for [l (range 2 (inc (count s)))]
@@ -52,7 +53,7 @@
                                               matching (matching chunked target)]
                                           (if-not (empty? matching) (score-all matching (contigous-str l target)) 0))))))
 
-(defn best-score [s]
+(defn best-score [_ _ s]
   "Calculate the maximum score for a n-length string s.
   Maximum achievable score is dependent on the lenght of s only"
   (let [l (count s)]
@@ -64,9 +65,17 @@
             (recur score (inc sublen)))))
       1)))
 
-(defn match-% [s target]
+(defn match-% [_ s target]
   "Return a matching score for string s and its substrings into target
   as percentage of the possible maximum achievable."
-  (let [match (match s target)
-        best (best-score target)]
+  (let [match (match _ s target)
+        best (best-score _ _ target)]
     (* (/ match best) 100.)))
+
+(deftype NaiveDistance [])
+
+(extend NaiveDistance
+  p/Score
+  {:match #'match
+   :best-score #'best-score
+   :match-% #'match-%})

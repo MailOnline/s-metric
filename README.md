@@ -53,6 +53,6 @@ Tests are covering all useful scenarios, use them as documentation. To run:
 * debug macro extended to variadic to include into xrepl
 * protocol for metrics containing max-score, match so you can extend s-metric with your own metrics outside the project
 * implement verbose output
-* rename hamming to special-hamming with padding left
+* rename hamming to special-hamming with padding left or make it configurable
 
 #### Copyright © 2014 DMGT The Mailonline

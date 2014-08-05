@@ -2,7 +2,9 @@
   (:require [midje.sweet :refer :all]
             [criterium.core :as b]
             [clojure.string :as s]
-            [s-metric.naive-match :refer :all]))
+            [s-metric.naive-match :refer :all])
+  (:import [s_metric.naive_match NaiveDistance]))
+
 
 (facts "scoring"
        (fact "accumulates points for each match based on string lenght"
@@ -35,22 +37,22 @@
 
 (facts "scoring on strings"
        (fact "one occurrence of a 5 letter string"
-             (match "ta" "abcdtargetefab") => 2
-             (match "ta" "tabcdtargetefab") => 4
-             (match "abcd" "ab123bc123cd123") => 6
-             (match "abcd" "ab1abc23bc123cd123") => 13
-             (match "18BA4471695" "95BA403053") => 9
-             (match "1234567890A" "1234564890A") => 66 ;; exponential drop
-             (match "1234567890A" "1234567890A") => 275))
+             (match (NaiveDistance.) "ta" "abcdtargetefab") => 2
+             (match (NaiveDistance.) "ta" "tabcdtargetefab") => 4
+             (match (NaiveDistance.) "abcd" "ab123bc123cd123") => 6
+             (match (NaiveDistance.) "abcd" "ab1abc23bc123cd123") => 13
+             (match (NaiveDistance.) "18BA4471695" "95BA403053") => 9
+             (match (NaiveDistance.) "1234567890A" "1234564890A") => 66 ;; exponential drop
+             (match (NaiveDistance.) "1234567890A" "1234567890A") => 275))
 
 (facts "maximum"
        (fact "max for 11 chars string"
-             (best-score "186XG471615") => 275))
+             (best-score (NaiveDistance.) "unused" "186XG471615") => 275))
 
 (facts "percentages"
        (fact "score as percentage"
-             (match-% "123" "123") => 100.
-             (match-% "567" "123") => 0.
-             (match-% "ababababab" "abab") => 425. ;bogus result, should instead throw error?
-             (match-% "18BA4471695" "95BA403053") => 4.285714285714286
-             (match-% "95BA447169A" "95BA4471695") => 77.0909090909091))
+             (match-% (NaiveDistance.) "123" "123") => 100.
+             (match-% (NaiveDistance.) "567" "123") => 0.
+             (match-% (NaiveDistance.) "ababababab" "abab") => 425. ;bogus result, should instead throw error?
+             (match-% (NaiveDistance.) "18BA4471695" "95BA403053") => 4.285714285714286
+             (match-% (NaiveDistance.) "95BA447169A" "95BA4471695") => 77.0909090909091))
