@@ -2,7 +2,11 @@
   (:require [s-metric.protocols :as p]
             [clojure.set :as s]
             [clojure.core.reducers :as r])
-  (:import [s_metric.combined Combined]))
+  (:import [s_metric.hamming HammingDistance]
+           [s_metric.naive_match NaiveDistance]
+           [s_metric.combined Combined]))
+
+(def metrics (Combined. [(HammingDistance.) (NaiveDistance.)]))
 
 (defn reducef [n]
   (fn [topn score]
@@ -24,8 +28,7 @@
   ([s xs]
    (top-scores s xs 20))
   ([s xs n]
-   (let [combined (Combined.)
-         xs (->> xs
+   (let [xs (->> xs
                  (into [])
-                 (r/map #(-> [(p/match-% combined s %) %])))]
+                 (r/map #(-> [(p/match-% metrics s %) %])))]
      (r/fold (r/monoid (combinef n) sorted-set) (reducef n) xs))))

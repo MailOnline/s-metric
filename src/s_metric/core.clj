@@ -9,6 +9,8 @@
            [s_metric.combined Combined])
   (:gen-class))
 
+(def combined (Combined. [(HammingDistance.) (NaiveDistance.)]))
+
 (def ^:dynamic *debug* false)
 
 (def options [
@@ -38,4 +40,4 @@
         (mandatory-args? args) (print-msg-and-exit (str "You need at list two strings to output their score. Usage: s-string [-ht] <first-string> <second-string>\n" banner))
         (:hamming opts) (println "Hamming" (as-score (p/match-% (HammingDistance.) (first args) (last args))))
         (:naive opts) (println "Naive" (as-score (p/match-% (NaiveDistance.) (first args) (last args))))
-        (:all opts) (println "Combined" (as-score (p/match-% (Combined.) (first args) (last args))))))))
+        (:all opts) (println "Combined" (as-score (p/match-% combined (first args) (last args))))))))
