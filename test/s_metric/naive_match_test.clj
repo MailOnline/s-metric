@@ -2,6 +2,7 @@
   (:require [midje.sweet :refer :all]
             [criterium.core :as b]
             [clojure.string :as s]
+            [s-metric.protocols :as p]
             [s-metric.naive-match :refer :all])
   (:import [s_metric.naive_match NaiveDistance]))
 
@@ -37,13 +38,13 @@
 
 (facts "scoring on strings"
        (fact "one occurrence of a 5 letter string"
-             (match (NaiveDistance.) "ta" "abcdtargetefab") => 2
-             (match (NaiveDistance.) "ta" "tabcdtargetefab") => 4
-             (match (NaiveDistance.) "abcd" "ab123bc123cd123") => 6
-             (match (NaiveDistance.) "abcd" "ab1abc23bc123cd123") => 13
-             (match (NaiveDistance.) "18BA4471695" "95BA403053") => 9
-             (match (NaiveDistance.) "1234567890A" "1234564890A") => 66 ;; exponential drop
-             (match (NaiveDistance.) "1234567890A" "1234567890A") => 275))
+             (p/match (NaiveDistance.) "ta" "abcdtargetefab") => 2
+             (p/match (NaiveDistance.) "ta" "tabcdtargetefab") => 4
+             (p/match (NaiveDistance.) "abcd" "ab123bc123cd123") => 6
+             (p/match (NaiveDistance.) "abcd" "ab1abc23bc123cd123") => 13
+             (p/match (NaiveDistance.) "18BA4471695" "95BA403053") => 9
+             (p/match (NaiveDistance.) "1234567890A" "1234564890A") => 66 ;; exponential drop
+             (p/match (NaiveDistance.) "1234567890A" "1234567890A") => 275))
 
 (facts "maximum"
        (fact "max for 11 chars string"
@@ -51,8 +52,8 @@
 
 (facts "percentages"
        (fact "score as percentage"
-             (match-% (NaiveDistance.) "123" "123") => 100.
-             (match-% (NaiveDistance.) "567" "123") => 0.
-             (match-% (NaiveDistance.) "ababababab" "abab") => 425. ;bogus result, should instead throw error?
-             (match-% (NaiveDistance.) "18BA4471695" "95BA403053") => 4.285714285714286
-             (match-% (NaiveDistance.) "95BA447169A" "95BA4471695") => 77.0909090909091))
+             (p/match-% (NaiveDistance.) "123" "123") => 100.
+             (p/match-% (NaiveDistance.) "567" "123") => 0.
+             (p/match-% (NaiveDistance.) "ababababab" "abab") => 425. ;bogus result, should instead throw error?
+             (p/match-% (NaiveDistance.) "18BA4471695" "95BA403053") => 4.285714285714286
+             (p/match-% (NaiveDistance.) "95BA447169A" "95BA4471695") => 77.0909090909091))

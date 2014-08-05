@@ -1,7 +1,7 @@
 (ns s-metric.combined-test
   (:require [midje.sweet :refer :all]
-            [s-metric.protocols :as p]
-            [s-metric.combined :as c])
+            [s-metric.combined]
+            [s-metric.protocols :as p])
   (:import [s_metric.combined Combined]))
 
 (facts "combined match"
@@ -21,11 +21,3 @@
              (p/match-% (Combined.) "abcd" "ab123bc123cd123") => 1.176470588235294
              (p/match-% (Combined.) "abcd" "ab1abc23bc123cd123") => 1.315789473684211
              (p/match-% (Combined.) "95BA4471695" "z5BA4471695") => 77.62237762237763))
-
-(defn rand-str [n]
-  (.substring (clojure.string/replace (java.util.UUID/randomUUID) #"-" "") 0 n))
-
-(facts "bulk matching"
-       (let [target (into [] (map (fn [n] (rand-str 10)) (range 10000)))]
-         (fact "it only returns the top n"
-               (time (count (c/top-scores "f11k45k" target 20))) => 20)))

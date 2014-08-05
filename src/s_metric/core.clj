@@ -1,8 +1,12 @@
 (ns ^:skip-aot s-metric.core
-  (:use [clojure.tools.cli :only (cli)])
-  (:require [s-metric.hamming :as hamming]
-            [s-metric.naive-match :as naive]
-            [s-metric.combined :as combined])
+  (:require [clojure.tools.cli :refer [cli]]
+            [s-metric.protocols :as p]
+            [s-metric.hamming]
+            [s-metric.naive-match]
+            [s-metric.combined])
+  (:import [s_metric.hamming HammingDistance]
+           [s_metric.naive_match NaiveDistance]
+           [s_metric.combined Combined])
   (:gen-class))
 
 (def ^:dynamic *debug* false)
@@ -32,6 +36,6 @@
       (cond 
         (:test opts) (print-msg-and-exit (str " Args echo: " (seq args) "\n(To mesure JVM startup time just prepend 'time' to this command.)"))
         (mandatory-args? args) (print-msg-and-exit (str "You need at list two strings to output their score. Usage: s-string [-ht] <first-string> <second-string>\n" banner))
-        (:hamming opts) (println "Hamming" (as-score (hamming/match-% (first args) (last args))))
-        (:naive opts) (println "Naive" (as-score (naive/match-% (first args) (last args))))
-        (:all opts) (println "Combined" (as-score (combined/match-% (first args) (last args))))))))
+        (:hamming opts) (println "Hamming" (as-score (p/match-% (HammingDistance.) (first args) (last args))))
+        (:naive opts) (println "Naive" (as-score (p/match-% (NaiveDistance.) (first args) (last args))))
+        (:all opts) (println "Combined" (as-score (p/match-% (Combined.) (first args) (last args))))))))
