@@ -26,7 +26,7 @@ s-metric is a set of metrics to score how close a string compare to another. It 
 
 Add:
 
-        [s-metric "0.0.3"]
+        [s-metric "0.0.4"]
 
 to your project.clj. Here's an example snippet some interesting feature:
 
