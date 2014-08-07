@@ -23,6 +23,7 @@
              (h/distance "12345" "012345") => 6
              (h/distance "123456" "12345") => 1
              (h/distance "123abc" "123") => 3
+             (h/distance "AGCACACA" "ACACACTA") => 6
              (h/distance "qwer" "abc134qwer") => 10
              (h/distance "abc134qwer" "qwer") => 10
              (h/distance "qwer" "qwerabc134") => 6))
@@ -43,5 +44,6 @@
                (p/match-% (HammingDistance.) "123456" "12345") => 83.33
                (p/match-% (HammingDistance.) "12345" "123456") => 83.33
                (p/match-% (HammingDistance.) "123abc" "123") => 50.
+               (p/match-% (HammingDistance.) "AGCACACA" "ACACACTA") => 25.0
                (p/match-% (HammingDistance.) "124QA075228" "124QA075228") => 100.0
                (p/match-% (HammingDistance.) "qwer" "abc134qwer") => 0.)))
