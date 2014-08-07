@@ -34,7 +34,7 @@
   and the maximum score achievable."
   (let [match (match _ s target)
         best (best-score _ s target)]
-    (* (/ match best) 100.)))
+    (double (/ (Math/round (* (/ match best) 10000.)) 100))))
 
 (deftype HammingDistance [])
 

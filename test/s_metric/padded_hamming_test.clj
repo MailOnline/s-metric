@@ -40,7 +40,7 @@
              (let [hd (HammingDistance.)]
                (p/match-% (HammingDistance.) "hello" "hello") => 100.
                (p/match-% (HammingDistance.) "12345" "012345") => 0.
-               (p/match-% (HammingDistance.) "123456" "12345") => 83.33333333333333
-               (p/match-% (HammingDistance.) "12345" "123456") => 83.33333333333333
+               (p/match-% (HammingDistance.) "123456" "12345") => 83.33
+               (p/match-% (HammingDistance.) "12345" "123456") => 83.33
                (p/match-% (HammingDistance.) "123abc" "123") => 50.
                (p/match-% (HammingDistance.) "qwer" "abc134qwer") => 0.)))

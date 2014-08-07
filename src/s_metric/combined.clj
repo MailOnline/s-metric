@@ -13,7 +13,7 @@
   "Return a match score as percentage for all the distance metrics combined"
   (let [match (match _ s target)
         best (best-score _ s target)]
-    (* (/ match best) 100.)))
+    (double (/ (Math/round (* (/ match best) 10000.)) 100))))
 
 (deftype Combined [metrics])
 

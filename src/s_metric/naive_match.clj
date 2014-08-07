@@ -1,6 +1,6 @@
 (ns s-metric.naive-match
   "Naive match takes the brute force approach of searching all the substrings of size 2 and up
-  for the given target string. The score is accumulated based on the length of the matching substring."
+  for the given target strings. The score is accumulated based on the length of the matching substrings."
   (:require [s-metric.protocols :as p]))
 
 (set! *warn-on-reflection* true)
@@ -70,7 +70,7 @@
   as percentage of the possible maximum achievable."
   (let [match (match _ s target)
         best (best-score _ _ target)]
-    (* (/ match best) 100.)))
+    (double (/ (Math/round (* (/ match best) 10000.)) 100))))
 
 (deftype NaiveDistance [])
 

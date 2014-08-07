@@ -23,7 +23,7 @@
 (facts "combined percentage"
        (fact "match sum up to final score"
              (p/match-% metrics "123" "123") => 100.
-             (p/match-% metrics "ta" "tabcdtargetefab") => 0.8823529411764706
-             (p/match-% metrics "abcd" "ab123bc123cd123") => 1.176470588235294
-             (p/match-% metrics "abcd" "ab1abc23bc123cd123") => 1.315789473684211
-             (p/match-% metrics "95BA4471695" "z5BA4471695") => 77.62237762237763))
+             (p/match-% metrics "ta" "tabcdtargetefab") => 0.88
+             (p/match-% metrics "abcd" "ab123bc123cd123") => 1.18
+             (p/match-% metrics "abcd" "ab1abc23bc123cd123") => 1.32
+             (p/match-% metrics "95BA4471695" "z5BA4471695") => 77.62))

@@ -50,10 +50,11 @@
        (fact "max for 11 chars string"
              (best-score (NaiveDistance.) "unused" "186XG471615") => 275))
 
-(facts "percentages"
-       (fact "score as percentage"
+(facts "naive match percentages"
+       (fact "bunch of different cases"
              (p/match-% (NaiveDistance.) "123" "123") => 100.
              (p/match-% (NaiveDistance.) "567" "123") => 0.
-             (p/match-% (NaiveDistance.) "ababababab" "abab") => 425. ;bogus result, should instead throw error?
-             (p/match-% (NaiveDistance.) "18BA4471695" "95BA403053") => 4.285714285714286
-             (p/match-% (NaiveDistance.) "95BA447169A" "95BA4471695") => 77.0909090909091))
+             ;bogus result, should instead throw error?
+             (p/match-% (NaiveDistance.) "ababababab" "abab") => 425.
+             (p/match-% (NaiveDistance.) "18BA4471695" "95BA403053") => 4.29
+             (p/match-% (NaiveDistance.) "95BA447169A" "95BA4471695") => 77.09))
