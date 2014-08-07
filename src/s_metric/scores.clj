@@ -11,7 +11,7 @@
            [s_metric.levenshtein LevenshteinDistance]
            [s_metric.combined Combined]))
 
-(def metrics (Combined. [(HammingDistance.) (NaiveDistance.)]))
+(def metrics (Combined. [(HammingDistance.) (NaiveDistance.) (LevenshteinDistance.)]))
 
 (defn reducef [n]
   (fn [topn score]
