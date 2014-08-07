@@ -1,10 +1,10 @@
 (ns ^:skip-aot s-metric.core
   (:require [clojure.tools.cli :refer [cli]]
             [s-metric.protocols :as p]
-            [s-metric.hamming]
+            [s-metric.padded-hamming]
             [s-metric.naive-match]
             [s-metric.combined])
-  (:import [s_metric.hamming HammingDistance]
+  (:import [s_metric.padded_hamming HammingDistance]
            [s_metric.naive_match NaiveDistance]
            [s_metric.combined Combined])
   (:gen-class))

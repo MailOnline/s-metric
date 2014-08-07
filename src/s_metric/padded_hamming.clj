@@ -1,6 +1,5 @@
-(ns s-metric.hamming
+(ns s-metric.padded-hamming
   (:require [s-metric.protocols :as p]))
-
 
 (defn pad [s size]
   "Fill s with filler up to size."

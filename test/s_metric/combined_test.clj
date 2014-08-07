@@ -2,9 +2,9 @@
   (:require [midje.sweet :refer :all]
             [s-metric.combined]
             [s-metric.naive-match]
-            [s-metric.hamming]
+            [s-metric.padded-hamming]
             [s-metric.protocols :as p])
-  (:import [s_metric.hamming HammingDistance]
+  (:import [s_metric.padded_hamming HammingDistance]
            [s_metric.naive_match NaiveDistance]
            [s_metric.combined Combined]))
 

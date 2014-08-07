@@ -2,7 +2,7 @@
   (:require [s-metric.protocols :as p]
             [clojure.set :as s]
             [clojure.core.reducers :as r])
-  (:import [s_metric.hamming HammingDistance]
+  (:import [s_metric.padded_hamming HammingDistance]
            [s_metric.naive_match NaiveDistance]
            [s_metric.combined Combined]))
 

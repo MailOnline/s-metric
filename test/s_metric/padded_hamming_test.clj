@@ -1,8 +1,8 @@
-(ns s-metric.hamming-test
+(ns s-metric.padded-hamming-test
   (:require [midje.sweet :refer :all]
-            [s-metric.hamming :as h]
+            [s-metric.padded-hamming :as h]
             [s-metric.protocols :as p])
-  (:import [s_metric.hamming HammingDistance]))
+  (:import [s_metric.padded_hamming HammingDistance]))
 
 (facts "zero distance"
        (fact "basic facts"
