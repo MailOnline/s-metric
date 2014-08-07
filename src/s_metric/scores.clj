@@ -4,9 +4,11 @@
             [s-metric.padded-hamming]
             [s-metric.naive-match]
             [s-metric.combined]
+            [s-metric.levenshtein]
             [clojure.core.reducers :as r])
   (:import [s_metric.padded_hamming HammingDistance]
            [s_metric.naive_match NaiveDistance]
+           [s_metric.levenshtein LevenshteinDistance]
            [s_metric.combined Combined]))
 
 (def metrics (Combined. [(HammingDistance.) (NaiveDistance.)]))
@@ -31,6 +33,8 @@
   ([s xs]
    (top-scores s xs 20))
   ([s xs n]
+   (top-scores s xs n metrics))
+  ([s xs n metrics]
    (let [xs (->> xs
                  (into [])
                  (r/map #(-> [(p/match-% metrics s %) %])))]
