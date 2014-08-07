@@ -7,12 +7,7 @@
   :main s-metric.core
   :uberjar-name "s-metric.jar"
   :repl-options {:init 
-                 (do 
-                   ;; Had to import here, Midje not playing well with deftypes
-                   (require 's-metric.combined) 
-                   (import '[s_metric.combined Combined]) 
-                   (require 'midje.repl) 
-                   (midje.repl/autotest)) :init-ns user}
+                 (do (require 'midje.repl) (midje.repl/autotest)) :init-ns user}
   :documentation {:files {
                           "docs/combined"
                           {:input "test/s_metric/combined_test.clj"

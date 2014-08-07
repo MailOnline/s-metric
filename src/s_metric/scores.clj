@@ -1,6 +1,9 @@
 (ns s-metric.scores
   (:require [s-metric.protocols :as p]
             [clojure.set :as s]
+            [s-metric.padded-hamming]
+            [s-metric.naive-match]
+            [s-metric.combined]
             [clojure.core.reducers :as r])
   (:import [s_metric.padded_hamming HammingDistance]
            [s_metric.naive_match NaiveDistance]
