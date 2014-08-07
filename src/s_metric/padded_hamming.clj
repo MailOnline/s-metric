@@ -29,17 +29,10 @@
   "Calculate the miminum hamming distance for a n-length string s"
   (max (count s) (count target)))
 
-(defn match-% [_ s target]
-  "Return a match score as percentage as the ratio between the score
-  and the maximum score achievable."
-  (let [match (match _ s target)
-        best (best-score _ s target)]
-    (double (/ (Math/round (* (/ match best) 10000.)) 100))))
-
 (deftype HammingDistance [])
 
 (extend HammingDistance
   p/Score
-  {:match #'match
-   :best-score #'best-score
-   :match-% #'match-%})
+  (assoc p/ScoreImpl 
+         :match #'match
+         :best-score #'best-score))

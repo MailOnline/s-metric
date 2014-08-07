@@ -65,17 +65,10 @@
             (recur score (inc sublen)))))
       1)))
 
-(defn match-% [_ s target]
-  "Return a matching score for string s and its substrings into target
-  as percentage of the possible maximum achievable."
-  (let [match (match _ s target)
-        best (best-score _ _ target)]
-    (double (/ (Math/round (* (/ match best) 10000.)) 100))))
-
 (deftype NaiveDistance [])
 
 (extend NaiveDistance
   p/Score
-  {:match #'match
-   :best-score #'best-score
-   :match-% #'match-%})
+  (assoc p/ScoreImpl 
+         :match #'match
+         :best-score #'best-score))

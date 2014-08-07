@@ -9,16 +9,10 @@
   "Calculate the best score for all metrics combined"
   (reduce + 0 (map #(p/best-score % s target) (.metrics _))))
 
-(defn match-% [_ s target]
-  "Return a match score as percentage for all the distance metrics combined"
-  (let [match (match _ s target)
-        best (best-score _ s target)]
-    (double (/ (Math/round (* (/ match best) 10000.)) 100))))
-
 (deftype Combined [metrics])
 
 (extend Combined
   p/Score
-  {:match #'match
-   :best-score #'best-score
-   :match-% #'match-%})
+  (assoc p/ScoreImpl 
+         :match #'match
+         :best-score #'best-score))
